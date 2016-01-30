@@ -1,7 +1,7 @@
 module ALU(
 	input CLK,RST,
     input [9:0] imData,data,
-    input SUM,SUB,OR,AND,NO,RSF,LSF,RLF,LLF,
+    input [8:0] code,
     output reg [9:0] out,
     output reg carry
 );
@@ -10,6 +10,17 @@ wire [9:0] net1,net2,result;
 reg [9:0] data1,data2;
 wire net_z,net_p,net_f;
 reg c_z; //キャリーイン、5bitキャリ、オーバーフロー
+wire SUM,SUB,OR,AND,NO,RSF,LSF,RLF,LLF;
+assign SUM = code[0];
+assign SUB = code[1];
+assign OR = code[2];
+assign AND = code[3];
+assign NO = code[4];
+assign RSF = code[5];
+assign LSF = code[6];
+assign RLF = code[7];
+assign LLF = code[8];
+
 
 assign net1 = data1;
 assign net2 = data2;
